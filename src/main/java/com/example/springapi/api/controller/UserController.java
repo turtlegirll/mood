@@ -4,6 +4,8 @@ import com.example.springapi.api.model.User;
 import com.example.springapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,23 +13,31 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.logging.Logger;
+
 @RestController
+@CrossOrigin(origins = "http://localhost:4200") // Replace with your Angular frontend URL
 public class UserController {
 
-    private final UserService userService;
-    @Autowired
-    public UserController(UserService userService){
-        this.userService = userService;
-    }
+  private final UserService userService;
+  private static final Logger logger = Logger.getLogger(UserController.class.getName());
 
-    @GetMapping
-    public User getUser(@RequestParam Integer id){
-        return userService.getUser(id);
-    }
+  @Autowired
+  public UserController(UserService userService) {
+    this.userService = userService;
+  }
 
-    @PostMapping("/users")
-    @ResponseStatus(HttpStatus.CREATED)
-    public User createUser(@RequestBody User user){
-        return userService.saveUser(user);
-    }
+  @GetMapping
+  public User getUser(@RequestParam Integer id) {
+    logger.info("GET /api/v1/event");
+    return userService.getUser(id);
+  }
+
+  @PostMapping("/users")
+  @ResponseStatus(HttpStatus.CREATED)
+  public ResponseEntity<User> createUser(@RequestBody User user) {
+    logger.info("Received request to create user: " + user);
+    User createdUser = userService.saveUser(user);
+    return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
+  }
 }
