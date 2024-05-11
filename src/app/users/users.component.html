@@ -1,0 +1,14 @@
+<form class="example-form" (ngSubmit)="createUser()">
+  <mat-form-field class="example-full-width">
+    <mat-label>username</mat-label>
+    <input matInput name="username" [(ngModel)]="user.name" placeholder="username">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>description</mat-label>
+    <textarea matInput name="description" [(ngModel)]="user.description" placeholder="description"></textarea>
+  </mat-form-field>
+  <div class="button-style">
+    <button mat-flat-button type="submit" color="primary">Create User</button>
+  </div>
+</form>
