@@ -15,6 +15,7 @@ import {MatList, MatListItem} from "@angular/material/list";
 import {HeatmapChartComponent} from "../heatmap-chart/heatmap-chart.component";
 import {SleepChartComponent} from "../sleep-chart/sleep-chart.component";
 import {MatGridList, MatGridTile} from "@angular/material/grid-list";
+import {Router, RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-mood-card',
@@ -36,16 +37,20 @@ import {MatGridList, MatGridTile} from "@angular/material/grid-list";
     HeatmapChartComponent,
     SleepChartComponent,
     MatGridList,
-    MatGridTile
+    MatGridTile,
+    RouterLink
   ],
   templateUrl: './mood-card.component.html',
   styleUrl: './mood-card.component.scss'
 })
 export class MoodCardComponent {
   mood_tracked: boolean;
+  constructor(private router: Router) {
+    this.mood_tracked = false;
+  }
 
-  constructor() {
-    this.mood_tracked = false; // Initialize mood_tracked to false
+  navigateToCreateUser() {
+    this.router.navigate(['/log-mood']);
   }
 
 }

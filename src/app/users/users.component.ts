@@ -5,24 +5,27 @@ import {UserService} from "../user.service";
 import {MatFormField, MatInput} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatButton} from "@angular/material/button";
+import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [
-    FormsModule,
-    MatInput,
-    MatFormField,
-    MatFormFieldModule,
-    MatButton
-  ],
+    imports: [
+        FormsModule,
+        MatInput,
+        MatFormField,
+        MatFormFieldModule,
+        MatButton,
+        RouterLink,
+      RouterOutlet, RouterLink, RouterLinkActive,
+    ],
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss'
 })
 export class UsersComponent {
 
 
-  user: User = { name: '', description: ''}; // Declare user variable of type User
+  user: User = { name: '', description: ''};
 
   constructor(private userService: UserService,
               ) {
@@ -36,7 +39,7 @@ export class UsersComponent {
 
       },
       error: err => {
-        console.log('failed', err); // Log the error message for debugging
+        console.log('failed', err);
 
       }
       }
