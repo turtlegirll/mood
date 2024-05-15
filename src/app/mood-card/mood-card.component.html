@@ -1,0 +1,118 @@
+<div class="flex-container-cards">
+
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>edit_calendar</mat-icon>
+        Did you log your moods today?
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content *ngIf="!mood_tracked">
+
+      <div class="flex-container">
+        <div>
+          <button mat-fab class="button-style" aria-label="Example fab with a heart icon" (click)="navigateToCreateUser()" >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+        <div>
+          <h2>
+            You haven't logged your mood today!
+          </h2>
+          <h4>
+            Click to add your mood now.
+          </h4>
+        </div>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>auto_awesome</mat-icon>
+        Tips for the day
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+
+      <mat-list role="list" >
+        <mat-list-item lines="3">
+          <span matListItemTitle>Know What Matters:</span>
+          <span>  Start your day by figuring out what tasks are super important and need to be done now.</span>
+
+
+        </mat-list-item>
+        <mat-list-item lines="3">
+          <span matListItemTitle>Move around</span>
+          <span>Use your breaks to get moving. Stretch, take a quick walk, or do something active. </span>
+
+
+        </mat-list-item>
+
+      </mat-list>
+
+
+    </mat-card-content>
+  </mat-card>
+
+
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>lightbulb</mat-icon>
+        Quote of the day
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <div class="flex-container">
+        <div>
+          <img mat-card-md-image src="assets/images/vang1.png" class="image-style" alt="vangogh picture">
+        </div>
+        <div>
+          <h2>
+            “The happiness of your life depends upon the quality of your thoughts.”
+          </h2>
+
+        </div>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+
+</div>
+<mat-grid-list cols="2">
+  <mat-grid-tile  class="my-grid-tile">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>sentiment_very_satisfied</mat-icon>
+          Registered mood this week
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <app-heatmap-chart></app-heatmap-chart>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile  class="my-grid-tile">
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>dark_mode</mat-icon>
+         Hours of sleep this week
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <app-sleep-chart></app-sleep-chart>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+
+
+
